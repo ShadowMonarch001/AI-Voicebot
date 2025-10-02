@@ -10,7 +10,7 @@ The bot can **listen to your voice**, **understand questions**, and **reply in m
 - 🎙️ **Voice Input** using `streamlit-mic-recorder`  
 - 📝 **Speech-to-Text** via AssemblyAI  
 - 🧠 **RAG (semantic search)** on my personal knowledge base  
-- 🤖 **LLM Responses** generated via OpenRouter  
+- 🤖 **LLM Responses** generated via OpenRouter NVIDIA Nemotron Nano 9B V2
 - 🔊 **Voice Output** (Text-to-Speech with gTTS, auto-play in browser)  
 - 💬 **Chat History** with context awareness  
 - ⚡ **Fallback** to natural conversation if no KB match  
@@ -136,6 +136,7 @@ torch
 
 ## 📸 Screenshot (UI Preview)
 
-*(Add your screenshot here once deployed)*
+<img width="539" height="821" alt="image" src="https://github.com/user-attachments/assets/c725a35d-b7a7-49f6-af76-0ca2e5cde7b6" />
+
 
 ---
