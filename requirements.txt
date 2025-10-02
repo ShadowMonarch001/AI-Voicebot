@@ -1,0 +1,8 @@
+streamlit
+streamlit-mic-recorder
+assemblyai
+faiss-cpu
+numpy
+requests
+gTTS
+sentence-transformers
