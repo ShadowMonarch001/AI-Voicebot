@@ -54,83 +54,72 @@ if "rag_initialized" not in st.session_state:
 
 st.markdown(
     """
-    <style>
-
-    .main-header {
-        text-align: center;
-        padding: 2rem 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 10px;
-        margin-bottom: 2rem;
-        color: white;
+<style>
+.main-header {
+    text-align: center;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    color: white;
+}
+.chat-message {
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    animation: fadeIn 0.5s;
+}
+.user-message {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    color: #1565c0;
+}
+.bot-message {
+    background-color: #f3e5f5;
+    border-left: 4px solid #9c27b0;
+    color: #4a148c;
+}
+.rag-info {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #856404;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-
-    .chat-message {
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 1rem 0;
-        animation: fadeIn 0.5s;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .user-message {
-        background-color: #e3f2fd;
-        border-left: 4px solid #2196f3;
-        color: #1565c0;
-    }
-
-    .bot-message {
-        background-color: #f3e5f5;
-        border-left: 4px solid #9c27b0;
-        color: #4a148c;
-    }
-
-    .rag-info {
-        background-color: #fff3cd;
-        border-left: 4px solid #ffc107;
-        padding: 0.75rem;
-        border-radius: 8px;
-        margin: 0.5rem 0;
-        font-size: 0.9rem;
-        color: #856404;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .stButton > button {
-        width: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border: none;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    .stButton > button:hover {
-        transform: scale(1.02);
-    }
-
-    .stats-box {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        color: white;
-        padding: 1rem;
-        border-radius: 8px;
-        text-align: center;
-        margin: 1rem 0;
-    }
-
-    </style>
+}
+.stButton > button {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.stButton > button:hover {
+    transform: scale(1.02);
+}
+.stats-box {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1rem 0;
+}
+</style>
     """,
     unsafe_allow_html=True
 )
@@ -1421,17 +1410,10 @@ if not st.session_state.rag_initialized:
 # ============================================================
 
 st.markdown(
-    """
-    <div class="main-header">
-
-        <h1>🎤 Meet Pandya — Digital Twin</h1>
-
-        <p>
-            Personal RAG • Semantic Search • Voice AI
-        </p>
-
-    </div>
-    """,
+    '<div class="main-header">'
+    '<h1>🎤 Meet Pandya — Digital Twin</h1>'
+    '<p>Personal RAG • Semantic Search • Voice AI</p>'
+    '</div>',
     unsafe_allow_html=True
 )
 
@@ -1446,15 +1428,8 @@ col1, col2, col3 = st.columns(3)
 with col1:
 
     st.markdown(
-        f"""
-        <div class="stats-box">
-
-            <h3>{st.session_state.request_count}</h3>
-
-            <p>API Calls</p>
-
-        </div>
-        """,
+        f'<div class="stats-box"><h3>{st.session_state.request_count}</h3>'
+        f'<p>API Calls</p></div>',
         unsafe_allow_html=True
     )
 
@@ -1462,15 +1437,8 @@ with col1:
 with col2:
 
     st.markdown(
-        f"""
-        <div class="stats-box">
-
-            <h3>{len(st.session_state.messages) // 2}</h3>
-
-            <p>Conversations</p>
-
-        </div>
-        """,
+        f'<div class="stats-box"><h3>{len(st.session_state.messages) // 2}</h3>'
+        f'<p>Conversations</p></div>',
         unsafe_allow_html=True
     )
 
@@ -1478,15 +1446,8 @@ with col2:
 with col3:
 
     st.markdown(
-        f"""
-        <div class="stats-box">
-
-            <h3>{len(KNOWLEDGE_BASE)}</h3>
-
-            <p>Knowledge Items</p>
-
-        </div>
-        """,
+        f'<div class="stats-box"><h3>{len(KNOWLEDGE_BASE)}</h3>'
+        f'<p>Knowledge Items</p></div>',
         unsafe_allow_html=True
     )
 
@@ -1554,8 +1515,7 @@ without inventing personal information.
 ### 🎤 Voice Pipeline
 
 **Speech → AssemblyAI → RAG → LLM → gTTS → Audio**
-""",
-        unsafe_allow_html=True
+"""
     )
 
 
@@ -1917,14 +1877,9 @@ for idx, message in enumerate(
             )
 
             st.markdown(
-                f"""
-                <div class="chat-message user-message">
-
-                    <strong>You:</strong>
-                    {safe_content}
-
-                </div>
-                """,
+                f'<div class="chat-message user-message">'
+                f'<strong>You:</strong> {safe_content}'
+                f'</div>',
                 unsafe_allow_html=True
             )
 
@@ -1945,14 +1900,9 @@ for idx, message in enumerate(
             )
 
             st.markdown(
-                f"""
-                <div class="chat-message bot-message">
-
-                    <strong>🤖 Meet:</strong>
-                    {safe_content}
-
-                </div>
-                """,
+                f'<div class="chat-message bot-message">'
+                f'<strong>🤖 Meet:</strong> {safe_content}'
+                f'</div>',
                 unsafe_allow_html=True
             )
 
@@ -1988,25 +1938,11 @@ for idx, message in enumerate(
                 )
 
                 st.markdown(
-                    f"""
-                    <div class="rag-info">
-
-                        <strong>
-                            🔍 RAG Context Used
-                        </strong>
-
-                        <br><br>
-
-                        <strong>Matched:</strong>
-                        "{safe_question}"
-
-                        <br><br>
-
-                        <strong>Similarity:</strong>
-                        {similarity:.1%}
-
-                    </div>
-                    """,
+                    f'<div class="rag-info">'
+                    f'<strong>🔍 RAG Context Used</strong><br><br>'
+                    f'<strong>Matched:</strong> "{safe_question}"<br><br>'
+                    f'<strong>Similarity:</strong> {similarity:.1%}'
+                    f'</div>',
                     unsafe_allow_html=True
                 )
 
@@ -2141,52 +2077,10 @@ if prompt:
 st.markdown("---")
 
 st.markdown(
-    """
-    <div style="
-        text-align: center;
-        color: #888;
-        padding: 1.5rem 0 0.5rem 0;
-        margin-top: 1rem;
-    ">
-
-        <p style="
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        ">
-            <strong>
-                Built as Meet Pandya's Personal Digital Twin
-            </strong>
-        </p>
-
-        <p style="
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-        ">
-            🧠 Personal RAG
-            &nbsp;•&nbsp;
-            🔎 FAISS
-            &nbsp;•&nbsp;
-            ⚡ NVIDIA Nemotron
-            &nbsp;•&nbsp;
-            🎤 Voice AI
-            &nbsp;•&nbsp;
-            🔊 Auto-Play
-        </p>
-
-        <p style="
-            font-size: 0.8rem;
-            margin-bottom: 0;
-        ">
-            Sentence Transformers
-            &nbsp;•&nbsp;
-            AssemblyAI
-            &nbsp;•&nbsp;
-            OpenRouter
-            &nbsp;•&nbsp;
-            gTTS
-        </p>
-
-    </div>
-    """,
+    '<div style="text-align: center; color: #888; padding: 1.5rem 0 0.5rem 0; margin-top: 1rem;">'
+    '<p style="margin-bottom: 0.8rem; font-size: 1rem;"><strong>Built as Meet Pandya\'s Personal Digital Twin</strong></p>'
+    '<p style="margin-bottom: 0.8rem; font-size: 0.9rem;">🧠 Personal RAG &nbsp;•&nbsp; 🔎 FAISS &nbsp;•&nbsp; ⚡ NVIDIA Nemotron &nbsp;•&nbsp; 🎤 Voice AI &nbsp;•&nbsp; 🔊 Auto-Play</p>'
+    '<p style="font-size: 0.8rem; margin-bottom: 0;">Sentence Transformers &nbsp;•&nbsp; AssemblyAI &nbsp;•&nbsp; OpenRouter &nbsp;•&nbsp; gTTS</p>'
+    '</div>',
     unsafe_allow_html=True
 )
