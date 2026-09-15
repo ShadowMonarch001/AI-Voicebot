@@ -938,6 +938,26 @@ def clean_bot_response(text):
 
     text = text.strip()
 
+    # Catch leaked chain-of-thought that never resolved into a clean
+    # final answer (e.g. the model got truncated mid-thought, or ignored
+    # the "no visible reasoning" instruction entirely).
+    leaked_thinking_markers = [
+        r"^here'?s (a|my|the) thinking process",
+        r"^let'?s analyze",
+        r"^\s*1\.\s*(analyze|understand|check)\b",
+        r"^okay,? let'?s\b",
+        r"^first,? i (need to|should) (analyze|figure out|understand)",
+    ]
+
+    for marker in leaked_thinking_markers:
+
+        if re.match(marker, text, flags=re.IGNORECASE):
+
+            return (
+                "I'm Meet — could you rephrase that? "
+                "I didn't quite get a clean answer together that time."
+            )
+
     if not text:
         return "I'm Meet — what would you like to know?"
 
@@ -1033,6 +1053,8 @@ def get_bot_response(
         # ----------------------------------------------------
 
         system_prompt = """
+detailed thinking off
+
 You are Meet Pandya's personal Digital Twin.
 
 You speak in FIRST PERSON as Meet.
@@ -1192,9 +1214,10 @@ Instructions:
                     0.7,
 
                 "max_tokens":
-                    300,
+                    600,
 
                 "reasoning": {
+                    "enabled": False,
                     "exclude": True
                 }
             },
