@@ -224,7 +224,7 @@ Instructions:
                 "X-Title": "Interview Voice Bot"
             },
             json={
-                "model": "nvidia/nemotron-nano-9b-v2:free",
+                "model": "nvidia/nemotron-3.5-lightning:free",
                 "messages": messages,
                 "temperature": 0.7,
                 "max_tokens": 300
@@ -502,7 +502,7 @@ st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #666; padding: 1rem;">
     <p><strong>Built for Personal Chat Demo</strong></p>
-    <p>🏗️ Smart RAG • ⚡ NVIDIA Nemotron Nano 9B V2 • 🎤 Voice Ready • 🔊 Auto-Play</p>
+    <p>🏗️ Smart RAG • ⚡ NVIDIA Nemotron-3.5-lightning • 🎤 Voice Ready • 🔊 Auto-Play</p>
     <p style="font-size: 0.85rem;">
         Faster model (60s timeout) • Auto-play audio • Mic support<br>
         <em>Note: Using free APIs (OpenRouter & gTTS). If you hit API limits or no voice plays, please wait a moment and try again.</em>
